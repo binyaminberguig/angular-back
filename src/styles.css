@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+html, body { height: 96%;}
+.card-header{
+    display: flex;
+    justify-content: space-between;
+    width: 96.5%;
+}
+.card-content{
+    min-height: 675px;
+    max-height: 675px;
+    overflow: auto;
+}

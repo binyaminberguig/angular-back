@@ -1,0 +1,26 @@
+<mat-dialog-content>
+	<p>
+		{{entete}}
+	</p>
+	<form [formGroup]="dialogForm" novalidate>
+	  <mat-form-field class="element-full-width" appearance="outline">
+	    <input matInput placeholder="Nom" required formControlName="name">
+	  </mat-form-field><br>
+		<mat-form-field class="element-full-width" appearance="outline">
+			<input matInput placeholder="Prénom" required formControlName="firstname">
+    </mat-form-field><br>
+    <mat-form-field class="element-full-width" appearance="outline">
+			<input matInput placeholder="E-mail" required formControlName="mail">
+    </mat-form-field><br>
+    <mat-form-field class="element-full-width" appearance="outline">
+			<input matInput placeholder="Nombre de mission" required formControlName="nbMission">
+    </mat-form-field><br>
+    <mat-form-field class="element-full-width" appearance="outline">
+			<input matInput placeholder="Spécialité(s)" required formControlName="speciality">
+		</mat-form-field><br>
+	</form>
+</mat-dialog-content>
+<mat-dialog-actions>
+	<button mat-raised-button color="primary" tabindex="1" [disabled]="!dialogForm.valid" type="submit" (click)="onConfirmClick()">{{confirmButtonText}}</button>
+	<button mat-raised-button mat-dialog-close tabindex="-1" >{{cancelButtonText}}</button>
+</mat-dialog-actions>

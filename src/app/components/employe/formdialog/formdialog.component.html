@@ -1,0 +1,28 @@
+<mat-dialog-content>
+	<p>
+		{{entete}}
+	</p>
+	<form [formGroup]="dialogForm" novalidate>
+	  <mat-form-field class="element-full-width" appearance="outline">
+	    <input matInput placeholder="Nom" required formControlName="name">
+	  </mat-form-field><br>
+		<mat-form-field class="element-full-width" appearance="outline">
+			<input matInput placeholder="Prénom" required formControlName="firstname">
+    </mat-form-field><br>
+    <mat-form-field class="element-full-width" appearance="outline">
+			<input matInput placeholder="Téléphone" required formControlName="phone">
+    </mat-form-field><br>
+    <mat-form-field class="element-full-width" appearance="outline">
+			<input matInput placeholder="Poste" required formControlName="job">
+    </mat-form-field><br>
+    <mat-form-field class="element-full-width" appearance="outline">
+      <mat-select placeholder="Site" formControlName="site" required>
+        <mat-option *ngFor="let site of sites" [value]="site._id" >{{ site.name }}</mat-option>
+      </mat-select>
+    </mat-form-field><br>
+	</form>
+</mat-dialog-content>
+<mat-dialog-actions>
+	<button mat-raised-button color="primary" tabindex="1" [disabled]="!dialogForm.valid" type="submit" (click)="onConfirmClick()">{{confirmButtonText}}</button>
+	<button mat-raised-button mat-dialog-close tabindex="-1" >{{cancelButtonText}}</button>
+</mat-dialog-actions>

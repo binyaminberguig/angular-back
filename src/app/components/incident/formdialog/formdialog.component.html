@@ -1,0 +1,48 @@
+<mat-dialog-content>
+	<p>
+		{{entete}}
+	</p>
+	<form [formGroup]="dialogForm" novalidate>
+	  <mat-form-field class="element-full-width" appearance="outline">
+	    <input matInput placeholder="Titre" required formControlName="title">
+	  </mat-form-field><br>
+		<mat-form-field class="element-full-width" appearance="outline">
+			<input matInput placeholder="Date de création" required formControlName="date_creation" readonly>
+    </mat-form-field><br>
+    <mat-form-field class="element-full-width" appearance="outline">
+	    <input matInput placeholder="Description" required formControlName="description">
+    </mat-form-field><br>
+    <section class="element-full-width radio-button-content">
+      <label>Type d'incident</label>
+      <mat-radio-group formControlName="type" (change)="onTypeChanged()">
+        <mat-radio-button value="Matériel">Matériel</mat-radio-button>
+        <mat-radio-button value="Logiciel">Logiciel</mat-radio-button>
+        <mat-radio-button value="Serveur">Serveur</mat-radio-button>
+        <mat-radio-button value="Réseau">Réseau</mat-radio-button>
+      </mat-radio-group>
+    </section><br>
+    <mat-form-field class="element-full-width" appearance="outline">
+      <mat-select placeholder="Type" formControlName="typedata" required>
+        <mat-option *ngFor="let typedata of typedatas" [value]="typedata._id" >
+          <span *ngIf="typedata.name">{{ typedata.name }}</span>
+          <span *ngIf="typedata.brand">{{ typedata.brand }}</span>
+          <span *ngIf="typedata.IPAddress">{{ typedata.IPAddress }}</span>
+        </mat-option>
+      </mat-select>
+    </mat-form-field><br>
+    <mat-form-field class="element-full-width" appearance="outline">
+      <mat-select placeholder="Technicien" formControlName="technician" required>
+        <mat-option *ngFor="let technicien of technicians" [value]="technicien._id" >{{ technicien.name }}</mat-option>
+      </mat-select>
+    </mat-form-field><br>
+    <mat-form-field class="element-full-width" appearance="outline">
+      <mat-select placeholder="Employé concerné" formControlName="employe" required>
+        <mat-option *ngFor="let employe of employes" [value]="employe._id" >{{ employe.name }}</mat-option>
+      </mat-select>
+	  </mat-form-field><br>
+	</form>
+</mat-dialog-content>
+<mat-dialog-actions>
+	<button mat-raised-button color="primary" tabindex="1" [disabled]="!dialogForm.valid" type="submit" (click)="onConfirmClick()">{{confirmButtonText}}</button>
+	<button mat-raised-button mat-dialog-close tabindex="-1" >{{cancelButtonText}}</button>
+</mat-dialog-actions>
